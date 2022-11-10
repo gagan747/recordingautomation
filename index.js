@@ -64,4 +64,7 @@ app.listen(5000, () => {
 //=> {"hello": "world"}
 process.on('uncaughtException',(err)=>{
           console.log(err)
+});
+process.on('unhandledRejection',(err)=>{
+          console.log(err)
 })
