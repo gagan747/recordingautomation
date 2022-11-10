@@ -58,7 +58,7 @@ setInterval(() => {
 app.get('/', (req, res) => { //its just for testing promisify
           readFile(`${process.cwd()}/package.json`, 'utf-8').then((data) => res.send(data)).catch((err) => res.send(err))
 });
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 5000, () => {
           console.log(`server listening on port 5000`);
 });
 //=> {"hello": "world"}
