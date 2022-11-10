@@ -46,7 +46,6 @@ const recordStream = (endMilliseconds) => {
 setInterval(() => {
           
           const currentIndianTime = new Date(new Date().toLocaleString(undefined, { timeZone: 'Asia/Kolkata' }));
-          console.log(`${currentIndianTime.getHours()}:${currentIndianTime.getMinutes()}`)
           global.dutyConfigs.map((config) => {
                     if (config['startTime'] === `${currentIndianTime.getHours()}:${currentIndianTime.getMinutes()}`)
                               recordStream(((config['endTime'].split(':')[0] * 60 + config['endTime'].split(':')[1]) - (config['startTime'].split(':')[0] * 60 + config['startTime'].split(':')[1])) * 60 * 1000);
