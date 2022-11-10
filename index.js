@@ -53,7 +53,7 @@ setInterval(() => {
 
           });
 
-}, 59000)
+}, 60000)
 
 app.get('/', (req, res) => { //its just for testing promisify
           readFile(`${process.cwd()}/package.json`, 'utf-8').then((data) => res.send(data)).catch((err) => res.send(err))
