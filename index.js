@@ -22,7 +22,7 @@ function promisify(calbak) {   //my promisify
 const readFile = promisify(fs.readFile)
 const recordStream = (endMilliseconds) => {
           const mp4Url = 'https://live.sgpc.net:8443/;nocache=889869';
-          var currentdate = new Date();
+          var currentdate = new Date(new Date().toLocaleString(undefined, { timeZone: 'Asia/Kolkata' }));
           var datetime = currentdate.getDate() + "-"//for creating unique filename
                     + (currentdate.getMonth() + 1) + "-"
                     + currentdate.getFullYear() + "@"
