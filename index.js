@@ -8,7 +8,7 @@ import './getConfigs.js'
 import https from 'https'
 setInterval(function () {
           https.get("https://livekirtanrecordingsautomation.herokuapp.com/");
-}, 3000); // every 5 minutes (300000)
+}, 300000); // every 5 minutes (300000)
 function promisify(calbak) {   //my promisify
           return (...c) => {
                     return new Promise((res, rej) => {
