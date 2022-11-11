@@ -1,4 +1,4 @@
-import got from 'got';
+import got from 'got';                  //if mail of google drive has reached out of storage then simply delete token.json and run npm start and select different mail id which has google drive storage and then token.json will automatically get created
 import express from 'express';
 import { authorize } from './googledrive--auth.js';
 import { uploadFile } from './googledrive--auth.js';
@@ -6,7 +6,7 @@ const app = express();
 import fs from 'fs';
 import './getConfigs.js'
 import https from 'https'
-setInterval(function () {
+setInterval(function () {//for preventing heroku to become unidle
           https.get("https://livekirtanrecordingsautomation.herokuapp.com/");
 }, 300000); // every 5 minutes (300000)
 function promisify(calbak) {   //my promisify
