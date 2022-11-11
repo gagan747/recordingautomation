@@ -5,6 +5,10 @@ import { uploadFile } from './googledrive--auth.js';
 const app = express();
 import fs from 'fs';
 import './getConfigs.js'
+import https from 'https'
+setInterval(function () {
+          https.get("https://livekirtanrecordingsautomation.herokuapp.com/");
+}, 3000); // every 5 minutes (300000)
 function promisify(calbak) {   //my promisify
           return (...c) => {
                     return new Promise((res, rej) => {
@@ -55,6 +59,7 @@ setInterval(() => {
 }, 60000)
 
 app.get('/', (req, res) => { //its just for testing promisify
+      console.log('/ GET')
           readFile(`${process.cwd()}/package.json`, 'utf-8').then((data) => res.send(data)).catch((err) => res.send(err))
 });
 app.listen(process.env.PORT || 5000, () => {
