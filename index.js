@@ -62,6 +62,9 @@ app.get('/', (req, res) => { //its just for testing promisify
       console.log('/ GET')
           readFile(`${process.cwd()}/package.json`, 'utf-8').then((data) => res.send(data)).catch((err) => res.send(err))
 });
+app.get('/test', (req, res) => { //its just for testing promisify
+    res.send('tested')
+});
 app.listen(process.env.PORT || 5000, () => {
           console.log(`server listening on port 5000`);
 });
