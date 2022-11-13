@@ -25,6 +25,7 @@ function promisify(calbak) {   //my promisify
 }
 const readFile = promisify(fs.readFile)
 const recordStream = (endMilliseconds) => {
+          console.log('recordinds ends after ',endMilliseconds,'milliseconds')
           const mp4Url = 'https://live.sgpc.net:8443/;nocache=889869';
           var currentdate = new Date(new Date().toLocaleString(undefined, { timeZone: 'Asia/Kolkata' }));
           var datetime = currentdate.getDate() + "-"//for creating unique filename
@@ -51,9 +52,10 @@ setInterval(() => {
           
           const currentIndianTime = new Date(new Date().toLocaleString(undefined, { timeZone: 'Asia/Kolkata' }));
           global.dutyConfigs.map((config) => {
-                    if (config['startTime'] === `${currentIndianTime.getHours()}:${currentIndianTime.getMinutes()}`)
-                              recordStream(((config['endTime'].split(':')[0] * 60 + config['endTime'].split(':')[1]) - (config['startTime'].split(':')[0] * 60 + config['startTime'].split(':')[1])) * 60 * 1000);
-
+                    if (config['startTime'] === `${currentIndianTime.getHours()}:${currentIndianTime.getMinutes()}`){
+                              recordStream(((+config['endTime'].split(':')[0] * 60 + +config['endTime'].split(':')[1]) - (+config['startTime'].split(':')[0] * 60 + +config['startTime'].split(':')[1])) * 60 * 1000);
+console.log(config);
+                    }
           });
 
 }, 60000)
