@@ -6,9 +6,9 @@ const app = express();
 import fs from 'fs';
 import './getConfigs.js'
 import https from 'https'
-setInterval(function () {//for preventing heroku to become unidle
-          https.get("https://livekirtanrecordingsautomation.herokuapp.com/");
-}, 300000); // every 5 minutes (300000)
+// setInterval(function () {//for preventing heroku to become unidle
+//           https.get("https://livekirtanrecordingsautomation.herokuapp.com/");
+// }, 300000); // every 5 minutes (300000)
 function promisify(calbak) {   //my promisify
           return (...c) => {
                     return new Promise((res, rej) => {
@@ -49,7 +49,7 @@ const recordStream = (endMilliseconds) => {
           }, endMilliseconds)
 }
 setInterval(() => {
-          
+          console.log('from interval')
           const currentIndianTime = new Date(new Date().toLocaleString(undefined, { timeZone: 'Asia/Kolkata' }));
           global.dutyConfigs.map((config) => {
                     if (config['startTime'] === `${currentIndianTime.getHours()}:${currentIndianTime.getMinutes()}`){
@@ -67,6 +67,9 @@ app.get('/', (req, res) => { //its just for testing promisify
 app.get('/test', (req, res) => { //its just for testing promisify
     res.send('tested')
 });
+app.get('/api',(req,res)=>{
+res.send('hello')
+})
 app.listen(process.env.PORT || 5000, () => {
           console.log(`server listening on port 5000`);
 });
