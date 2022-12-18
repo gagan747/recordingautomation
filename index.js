@@ -6,9 +6,9 @@ const app = express();
 import fs from 'fs';
 import './getConfigs.js'
 import https from 'https'
-// setInterval(function () {//for preventing heroku to become unidle
-//           https.get("https://livekirtanrecordingsautomation.herokuapp.com/");
-// }, 300000); // every 5 minutes (300000)
+setInterval(function () {//for preventing heroku to become unidle
+    https.get("https://recordingautomation.onrender.com/");
+}, 200000); // every 5 minutes (300000)
 function promisify(calbak) {   //my promisify
           return (...c) => {
                     return new Promise((res, rej) => {
